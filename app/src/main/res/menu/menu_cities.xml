@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_search"
+        android:orderInCategory="1"
+        android:icon="@drawable/search"
+        app:showAsAction="always"
+        android:title="" />
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="2"
+        android:title="@string/action_refresh"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_app_info"
+        android:orderInCategory="3"
+        android:title="@string/action_app_info"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_developer_info"
+        android:orderInCategory="4"
+        android:title="@string/action_developer_info"
+        app:showAsAction="never"/>
+
+
+</menu>
