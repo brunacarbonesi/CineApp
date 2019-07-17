@@ -154,10 +154,7 @@ public class CitiesActivity extends AppCompatActivity {
         else if (id == R.id.action_search) {
             return true;
         }
-        else if (id == R.id.cityName) {
-            Intent intent = new Intent (this, CitiesActivity.class);
-            startActivity(intent);
-        }
+
 
 
         return super.onOptionsItemSelected(item);

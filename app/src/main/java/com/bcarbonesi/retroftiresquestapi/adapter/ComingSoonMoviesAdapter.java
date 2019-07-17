@@ -31,6 +31,8 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
     private Context context;
     private String posterMovieUrl;
     private String movieDateUrl;
+    private String movieDDMMUrl;
+    private String movieTitle;
 
 
     public ComingSoonMoviesAdapter(List<Movie> movies, int rowLayout, Context context) {
@@ -55,6 +57,11 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
         posterMovieUrl = comingSoonMovieViewHolder.bind(movies, i);
         movieDateUrl = movies.get(i).premiereDate.dayOfWeek + ", " + movies.get(i).premiereDate.dayAndMonth;
         movieDateUrl = StringUtils.capitalize(movieDateUrl);
+        movieDDMMUrl = movies.get(i).premiereDate.dayAndMonth;
+        movieTitle = movies.get(i).title;
+
+        comingSoonMovieViewHolder.textViewPremiereDate.setText( movieDDMMUrl);
+        comingSoonMovieViewHolder.textViewTitle.setText(movieTitle);
 
         Picasso.with(context)
                 .load(posterMovieUrl)
@@ -66,7 +73,7 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, ComingSoonDetailActivity.class);
-                intent.putExtra("movie_title", movies.get(i).title);
+                intent.putExtra("movie_title", movieTitle);
                 intent.putExtra("image_url", movies.get(i).images.get(0).url);
                 intent.putExtra("movie_description", movies.get(i).synopsis);
                 intent.putExtra("movie_date", movieDateUrl);
@@ -89,7 +96,8 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
         ImageView movieImage;
         TextView movieTitle;
 
-        //TextView movieDate;
+        TextView textViewTitle;
+        TextView textViewPremiereDate;
 
         //TextView data;
         //TextView movieDescription;
@@ -100,6 +108,10 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
             moviesLayout = itemView.findViewById(R.id.movies_layout);
             movieImage = itemView.findViewById(R.id.movie_image);
             movieTitle = itemView.findViewById(R.id.title);
+
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewPremiereDate = itemView.findViewById(R.id.textViewpremiereDate);
+
 
             //movieDate = itemView.findViewById(R.id.textViewComingSoon);
 

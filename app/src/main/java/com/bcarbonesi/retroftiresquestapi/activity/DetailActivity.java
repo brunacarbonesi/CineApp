@@ -28,7 +28,7 @@ public class DetailActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setIcon(R.drawable.theaters);
+        //actionBar.setIcon(R.drawable.theaters);
         actionBar.setTitle("Info");
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -109,10 +109,6 @@ public class DetailActivity extends AppCompatActivity {
         }
         else if (id == R.id.action_search) {
             return true;
-        }
-        else if (id == R.id.cityName) {
-            Intent intent = new Intent (this, CitiesActivity.class);
-            startActivity(intent);
         }
 
 

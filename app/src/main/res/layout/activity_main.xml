@@ -1,33 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.MainActivity"
-    android:orientation="vertical">
+    tools:context=".activity.MainActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/simpleTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabBackground="@color/colorPrimaryDark"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@color/colorWhite" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <!--This the interface sitting behind the backdrop and shown when it is collapsed-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:background="@color/colorBlack"
-        android:clickable="true"
-        android:focusable="true" />
+        android:orientation="vertical"
+        android:background="@color/colorAccent"
+        android:padding="10dp">
 
-    <FrameLayout
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cidade"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:textColorHint="@color/colorBackground"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat"
+            app:boxStrokeColor="@color/colorBackground"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:animateLayoutChanges="true">
+
+            <AutoCompleteTextView
+                android:id="@+id/filled_exposed_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+                android:textColor="@color/colorPrimaryText"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/material_button"
+            style="@style/MyButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:outlineAmbientShadowColor="@color/colorAccent"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/simpleFrameLayout"></FrameLayout>
+        android:layout_height="707dp"
+        android:orientation="vertical"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-</LinearLayout>
+        <!--This is the backdrop's header with a title and icon-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:clickable="true"
+            android:gravity="top"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/filterIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/location"
+                android:tint="@color/colorPrimaryText"/>
+
+            <TextView
+                android:id="@+id/cityChosen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:text="Rio de Janeiro"
+                android:textSize="18dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:src="@drawable/shape_round_corner_backdrop" />
+
+
+        <!--And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/simpleTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@color/colorPrimaryDark"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/colorPrimaryText" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryText"
+                android:clickable="true"
+                android:focusable="true"
+                android:scrollbars="vertical" />
+
+            <FrameLayout
+                android:id="@+id/simpleFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorPrimaryText"
         android:textSize="18sp"/>
 
     <TextView
